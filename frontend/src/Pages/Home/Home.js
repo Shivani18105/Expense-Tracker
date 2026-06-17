@@ -10,8 +10,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Spinner from "../../components/Spinner";
 import TableData from "./TableData";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 import BarChartIcon from "@mui/icons-material/BarChart";
 import Analytics from "./Analytics";
@@ -515,12 +514,12 @@ const Home = () => {
                       Start Date:
                     </label>
                     <div>
-                      <DatePicker
-                        selected={startDate}
-                        onChange={handleStartChange}
-                        selectsStart
-                        startDate={startDate}
-                        endDate={endDate}
+                      <Form.Control
+                        type="date"
+                        value={
+                          endDate ? endDate.toISOString().split("T")[0] : ""
+                        }
+                        onChange={(e) => setEndDate(new Date(e.target.value))}
                       />
                     </div>
                   </div>
@@ -529,13 +528,12 @@ const Home = () => {
                       End Date:
                     </label>
                     <div>
-                      <DatePicker
-                        selected={endDate}
-                        onChange={handleEndChange}
-                        selectsEnd
-                        startDate={startDate}
-                        endDate={endDate}
-                        minDate={startDate}
+                      <Form.Control
+                        type="date"
+                        value={
+                          startDate ? startDate.toISOString().split("T")[0] : ""
+                        }
+                        onChange={(e) => setStartDate(new Date(e.target.value))}
                       />
                     </div>
                   </div>
